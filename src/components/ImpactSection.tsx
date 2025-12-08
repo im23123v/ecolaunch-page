@@ -1,66 +1,80 @@
-import { TreePine, Droplets, Factory, Users } from "lucide-react";
+import { TreePine, Droplets, Factory, Users, TrendingUp, Leaf } from "lucide-react";
 
 const impactStats = [
   {
     icon: TreePine,
-    value: "500K+",
-    label: "Trees Saved",
-    description: "Through paper recycling programs",
+    value: "2.5M+",
+    label: "Trees Preserved",
+    description: "Through paper & cardboard recycling",
+    color: "text-primary",
   },
   {
     icon: Droplets,
-    value: "10B",
-    label: "Gallons Conserved",
-    description: "Water saved via smart processing",
+    value: "50B",
+    label: "Gallons Saved",
+    description: "Water conservation impact",
+    color: "text-blue-500",
   },
   {
     icon: Factory,
-    value: "85%",
-    label: "Landfill Reduction",
-    description: "Waste diverted from landfills",
+    value: "92%",
+    label: "Landfill Diversion",
+    description: "Materials recovered & recycled",
+    color: "text-secondary",
   },
   {
     icon: Users,
-    value: "2M+",
-    label: "Lives Impacted",
-    description: "Communities we've empowered",
+    value: "10M+",
+    label: "Lives Improved",
+    description: "Communities positively impacted",
+    color: "text-primary",
   },
 ];
 
 const ImpactSection = () => {
   return (
-    <section id="impact" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="impact" className="py-32 gradient-section relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Content */}
           <div>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-4">
-              Our Impact
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-6">
+              <Leaf className="w-4 h-4" />
+              Environmental Impact
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-foreground mb-6 leading-tight tracking-tight">
               Making a Measurable
               <span className="text-gradient block">Difference</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Every ton of waste we process, every community we partner with, and
-              every innovation we implement brings us closer to a world where waste
-              is a resource, not a problem.
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
+              Every partnership with EcoRecycle creates ripples of positive change. 
+              Our impact is measured not just in tons processed, but in ecosystems 
+              preserved and communities transformed.
             </p>
-            <div className="flex items-center gap-4">
+            
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-card border border-border">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
+                {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-medium text-muted-foreground"
+                    className="w-12 h-12 rounded-full gradient-hero border-4 border-card flex items-center justify-center text-xs font-bold text-primary-foreground"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">500+</span> companies
-                trust us
-              </p>
+              <div>
+                <p className="font-bold text-foreground">
+                  500+ Enterprise Partners
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Trusted by Fortune 500 companies worldwide
+                </p>
+              </div>
             </div>
           </div>
 
@@ -69,20 +83,36 @@ const ImpactSection = () => {
             {impactStats.map((stat, index) => (
               <div
                 key={index}
-                className="p-6 rounded-3xl gradient-card border border-border hover:shadow-medium transition-all duration-300 group"
+                className="group p-6 lg:p-8 rounded-[2rem] gradient-card border border-border card-hover"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <stat.icon className="w-6 h-6 text-primary" />
+                <div className={`w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <stat.icon className={`w-7 h-7 ${stat.color}`} />
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-1">
+                <div className="text-3xl lg:text-4xl font-bold font-display text-foreground mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm font-semibold text-foreground mb-1">
+                <div className="text-base font-semibold text-foreground mb-1">
                   {stat.label}
                 </div>
-                <p className="text-xs text-muted-foreground">{stat.description}</p>
+                <p className="text-sm text-muted-foreground">{stat.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+        
+        {/* Live Counter */}
+        <div className="mt-20 p-8 rounded-[2rem] gradient-dark relative overflow-hidden">
+          <div className="absolute inset-0 gradient-mesh opacity-20" />
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-4 h-4 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-lg text-primary-foreground/80">Live Impact Counter</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <TrendingUp className="w-8 h-8 text-secondary" />
+              <span className="text-4xl md:text-5xl font-bold font-display text-primary-foreground">2,547,823</span>
+              <span className="text-lg text-primary-foreground/60">tons processed this year</span>
+            </div>
           </div>
         </div>
       </div>
