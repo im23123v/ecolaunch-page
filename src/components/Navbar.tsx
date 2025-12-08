@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X, Recycle } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,7 +15,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: "Services" },
+    { href: "#services", label: "Solutions" },
+    { href: "#process", label: "Process" },
     { href: "#impact", label: "Impact" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
@@ -25,29 +26,40 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-soft py-3"
+          ? "glass-effect py-3"
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center shadow-glow transition-transform group-hover:scale-110">
-            <Leaf className="w-5 h-5 text-primary-foreground" />
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="relative w-12 h-12 rounded-2xl gradient-hero flex items-center justify-center shadow-glow transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+            <Recycle className="w-6 h-6 text-primary-foreground" />
+            <div className="absolute inset-0 rounded-2xl gradient-hero opacity-50 blur-xl group-hover:opacity-80 transition-opacity" />
           </div>
-          <span className="text-xl font-bold text-foreground">EcoVerde</span>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold font-display text-foreground tracking-tight">EcoRecycle</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Sustainable Future</span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+              className="relative px-4 py-2 text-muted-foreground hover:text-foreground transition-colors font-medium group"
             >
               {link.label}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-1/2" />
             </a>
           ))}
+        </div>
+
+        <div className="hidden lg:flex items-center gap-4">
+          <Button variant="ghost" size="default">
+            Log In
+          </Button>
           <Button variant="default" size="default">
             Get Started
           </Button>
@@ -55,7 +67,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-foreground rounded-xl hover:bg-muted transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -65,21 +77,26 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border animate-fade-up">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+        <div className="lg:hidden absolute top-full left-0 right-0 glass-effect border-t border-border animate-fade-up">
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground font-medium py-2"
+                className="text-foreground font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="lg" className="mt-2">
-              Get Started
-            </Button>
+            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border">
+              <Button variant="outline" size="lg">
+                Log In
+              </Button>
+              <Button variant="default" size="lg">
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
       )}
