@@ -9,10 +9,12 @@ import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import MouseTrail from "@/components/MouseTrail";
 
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <MouseTrail />
       <Navbar />
       <HeroSection />
       <StatsSection />
