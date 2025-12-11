@@ -153,12 +153,12 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 EcoRecycle Technologies Inc. All rights reserved.
+            © 2024 EcoRecycle • St. Peters Engineering College Hackathon
           </p>
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm text-muted-foreground">All systems operational</span>
+              <span className="text-xs font-medium text-primary">Team BitwiseBinary</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Made with 💚 for a sustainable future
